@@ -38,4 +38,15 @@ describe('Throttle', function () {
       done();
     }, 1001);
   });
+  it('4 - should embrace jasmine.clock() (it will make your life easier)', function () {
+    jasmine.clock().install();
+    let wasCalled = false;
+    setTimeout(() => wasCalled = true, 1000);
+    expect(wasCalled).toBe(false);
+
+    jasmine.clock().tick(1001);
+
+    expect(wasCalled).toBe(true);
+    jasmine.clock().uninstall();
+  });
 });
