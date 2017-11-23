@@ -1,7 +1,7 @@
 jQuery.fn.gameOfLifeWidget = function (gameOfLife, rows, columns, animationDuration) {
   return this.each(function () {
     var self = jQuery(this);
-    self.find('.tick').click(gameOfLife.tick);
+    self.find('.tick').click(gameOfLife.tick.bind(gameOfLife));
     self.find('.grid td').each(function (index) {
       jQuery(this).click(gameOfLife.toggleCellState.bind(gameOfLife, Math.floor(index / columns), index % columns));
     });
@@ -13,7 +13,7 @@ jQuery.fn.gameOfLifeWidget = function (gameOfLife, rows, columns, animationDurat
 describe('7 - Game of Life Widget', function () {
   var gameOfLife, widget;
   beforeEach(function () {
-    gameOfLife = SAMURAIPRINCIPLE.eventDispatcher(jasmine.createSpyObj('gameOfLife', ['tick', 'toggleCellState']));
+    gameOfLife = observable(jasmine.createSpyObj('gameOfLife', ['tick', 'toggleCellState']));
     widget = jQuery('#gameOfLifeWidget').clone().appendTo('body').gameOfLifeWidget(gameOfLife, 10, 10);
   });
   it('1 - should call toggleCellState method when a table cell is clicked', function () {
