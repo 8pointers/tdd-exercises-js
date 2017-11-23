@@ -1,6 +1,6 @@
-const observable = function (host) {
-  //TODO: Implement this so that the tests are passing
+const observable = function (base) {
 };
+
 describe('observable', function () {
   it('1 - should use it as a mixin', function () {
     var base = {}, result;
@@ -27,7 +27,7 @@ describe('observable', function () {
 
     underTest.dispatchEvent('argument');
 
-    expect(result).toBe('listenerInvoked');
+    expect(result).toBe('listenerInvoked with argument');
   });
   //Same test, but using a Jasmine spy
   it('4 - should use dispatchEvent to invoke registered listener', function () {
