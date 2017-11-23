@@ -72,4 +72,12 @@ describe('observable', function () {
     expect(underTest.getBalance()).toBe(123.45);
     expect(listener).toHaveBeenCalledWith(123.45);
   });
+  it('8 - should be able to dispatch variable number of arguments', function () {
+    var underTest = observable({}),
+      listener = jasmine.createSpy();
+    underTest.addEventListener('EventType', listener);
+    underTest.dispatchEvent('EventType', 'argument1', 'argument2', 'argument3');
+
+    expect(listener).toHaveBeenCalledWith('argument1', 'argument2', 'argument3');
+  });
 });
