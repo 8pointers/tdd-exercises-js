@@ -1,0 +1,58 @@
+{
+  "name": "2-redux",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "classnames": "2.2.5",
+    "prop-types": "15.6.0",
+    "react": "16.0.0",
+    "react-dom": "16.0.0",
+    "react-redux": "5.0.6",
+    "react-router": "4.2.0",
+    "react-router-dom": "4.2.2",
+    "react-scripts": "1.0.17",
+    "redux": "3.7.2",
+    "redux-thunk": "2.2.0",
+    "rxjs": "5.5.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/api/motd": {
+      "target": "https://694y9v59lf.execute-api.eu-west-2.amazonaws.com",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "^/api/motd": "/latest/motd"
+      }
+    },
+    "/api/gameOfLife": {
+      "target": "https://694y9v59lf.execute-api.eu-west-2.amazonaws.com",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "^/api/gameOfLife": "/latest/gameOfLife"
+      }
+    },
+    "/api/todo": {
+      "target": "https://694y9v59lf.execute-api.eu-west-2.amazonaws.com",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "^/api/todo": "/latest/todo"
+      }
+    },
+    "/api/ipify": {
+      "target": "https://api.ipify.org/",
+      "changeOrigin": true,
+      "secure": false,
+      "pathRewrite": {
+        "^/api/ipify": ""
+      }
+    }
+  }
+}
